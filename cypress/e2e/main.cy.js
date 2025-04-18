@@ -4,13 +4,14 @@ import RegistrationPage from '../support/pages/RegistrationPage';
 import LoginPage from '../support/pages/LoginPage';
 import SearchProductPage from '../support/pages/SearchProductPage';
 import CheckoutPage from '../support/pages/CheckoutPage';
+import WishlistPage from '../support/pages/WishlistPage';
 
 describe('Register and Place Order with Multiple Products and Validate Price', () => {
     const registrationPage = new RegistrationPage();
     const loginPage = new LoginPage();
     const searchProductPage = new SearchProductPage();
     const checkoutPage = new CheckoutPage();
-
+    const wishlistPage = new WishlistPage();
     let testData;
 
     before(() => {

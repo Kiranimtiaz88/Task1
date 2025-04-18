@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-04-18T00:48:32.501Z",
+    "end": "2025-04-18T00:49:23.078Z",
+    "duration": 50577,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8961f0b0-8f00-41b4-9bc1-ecc3c88d2847",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Registration.cy.js",
+      "file": "cypress\\e2e\\Registration.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3f73865a-5544-4bdf-b7fb-4a5cc0c3219e",
+          "title": "Place Order with Multiple Products and Validate Price",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should place an order with multiple products and validate price",
+              "fullTitle": "Place Order with Multiple Products and Validate Price should place an order with multiple products and validate price",
+              "timedOut": null,
+              "duration": 50329,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Step 1: Register a new user\nregistrationPage.visit();\nregistrationPage.fillFirstName(testData.firstName);\nregistrationPage.fillLastName(testData.lastName);\nregistrationPage.fillEmail(testData.email);\nregistrationPage.fillPassword(testData.password);\nregistrationPage.fillConfirmPassword(testData.password);\nregistrationPage.clickRegisterButton();\n/*\n        // Step 2: Log out after registration\n        cy.get('a[href*=\"customer/account/logout\"]', { timeout: 20000 }).click();\n\n        // Step 3: Validate login with the registered user\n        loginPage.visit();\n        loginPage.fillEmail(testData.email);\n        loginPage.fillPassword(testData.password);\n        loginPage.clickLoginButton();\n        loginPage.validateSuccessfulLogin();*/\n// Step 4: Search and add multiple products to the cart\nsearchProductPage.visit();\nsearchProductPage.searchForProduct('shirt');\nsearchProductPage.addProductToCart();\n// Step 5: Validate cart subtotal\nsearchProductPage.goToCart();\nsearchProductPage.validateCartSubtotal(100); // Replace 100 with the expected subtotal\n// Step 6: Proceed to checkout and place the order\ncheckoutPage.proceedToCheckout();\ncheckoutPage.fillShippingDetails({\n  email: testData.email,\n  firstName: testData.firstName,\n  lastName: testData.lastName,\n  address: '123 Main St',\n  city: 'Los Angeles',\n  postcode: '90001',\n  phone: '1234567890',\n  state: 'California'\n});\ncheckoutPage.selectShippingMethod();\ncheckoutPage.placeOrder();\n// Step 7: Validate order success\ncheckoutPage.validateOrderSuccess();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: '/subtotal|total|price/i' but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: '/subtotal|total|price/i' but never did.\n    at SearchProductPage.validateCartSubtotal (webpack://task1/./cypress/support/pages/SearchProductPage.js:30:6)\n    at Context.eval (webpack://task1/./cypress/e2e/Registration.cy.js:55:26)",
+                "diff": null
+              },
+              "uuid": "8a99dd79-d2d6-4c87-b33f-63e4e5e63e5b",
+              "parentUUID": "3f73865a-5544-4bdf-b7fb-4a5cc0c3219e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "8a99dd79-d2d6-4c87-b33f-63e4e5e63e5b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 50329,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
